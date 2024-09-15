@@ -389,6 +389,7 @@ set(pcsx2USBSources
 	USB/usb-pad/usb-pad-sdl-ff.cpp
 	USB/usb-pad/usb-pad.cpp
 	USB/usb-pad/usb-seamic.cpp
+	USB/usb-pad/usb-train.cpp
 	USB/usb-pad/usb-trance-vibrator.cpp
 	USB/usb-pad/usb-turntable.cpp
 	USB/usb-printer/usb-printer.cpp
@@ -425,6 +426,7 @@ set(pcsx2USBHeaders
 	USB/usb-pad/usb-realplay.h
 	USB/usb-pad/usb-pad-sdl-ff.h
 	USB/usb-pad/usb-pad.h
+	USB/usb-pad/usb-train.h
 	USB/usb-pad/usb-trance-vibrator.h
 	USB/usb-printer/usb-printer.h
 )
@@ -786,7 +788,7 @@ set(pcsx2DebugToolsSources
 	DebugTools/MipsAssemblerTables.cpp
 	DebugTools/MipsStackWalk.cpp
 	DebugTools/Breakpoints.cpp
-	DebugTools/SymbolMap.cpp
+	DebugTools/SymbolGuardian.cpp
 	DebugTools/DisR3000A.cpp
 	DebugTools/DisR5900asm.cpp
 	DebugTools/DisVU0Micro.cpp
@@ -803,7 +805,7 @@ set(pcsx2DebugToolsHeaders
 	DebugTools/MipsAssemblerTables.h
 	DebugTools/MipsStackWalk.h
 	DebugTools/Breakpoints.h
-	DebugTools/SymbolMap.h
+	DebugTools/SymbolGuardian.h
 	DebugTools/Debug.h
 	DebugTools/DisASM.h
 	DebugTools/DisVUmicro.h
@@ -1138,7 +1140,6 @@ target_link_libraries(PCSX2_FLAGS INTERFACE
 	cubeb
 	rcheevos
 	discord-rpc
-	demangler
 	simpleini
 	freesurround
 	SDL2::SDL2
@@ -1148,6 +1149,8 @@ target_link_libraries(PCSX2_FLAGS INTERFACE
 	PNG::PNG
 	LZMA::LZMA
 	Zstd::Zstd
+	demanglegnu
+	ccc
 	${LIBC_LIBRARIES}
 )
 
@@ -1286,6 +1289,7 @@ function(setup_main_executable target)
 		if (PACKAGE_MODE)
 			install(TARGETS pcsx2-qt DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
 			install(DIRECTORY ${CMAKE_SOURCE_DIR}/bin/resources DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/PCSX2)
+			install(DIRECTORY ${CMAKE_BINARY_DIR}/bin/translations DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/PCSX2)
 		else()
 			install(TARGETS pcsx2-qt DESTINATION ${CMAKE_SOURCE_DIR}/bin)
 		endif()
