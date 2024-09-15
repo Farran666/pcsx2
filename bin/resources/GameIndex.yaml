@@ -25744,6 +25744,8 @@ SLES-54714:
   region: "PAL-E"
   roundModes:
     vu1RoundMode: 0 # Crashes without.
+  speedHacks:
+    mtvu: 0 # Prevents crashes after the completion of the tutorial.
   gsHWFixes:
     minimumBlendingLevel: 3 # Fixes broken lighting on ground and buildings.
     halfPixelOffset: 4 # Mostly aligns post processing.
@@ -25754,6 +25756,8 @@ SLES-54715:
   region: "PAL-M4"
   roundModes:
     vu1RoundMode: 0 # Crashes without.
+  speedHacks:
+    mtvu: 0 # Prevents crashes after the completion of the tutorial.
   gsHWFixes:
     minimumBlendingLevel: 3 # Fixes broken lighting on ground and buildings.
     halfPixelOffset: 4 # Mostly aligns post processing.
@@ -66304,6 +66308,8 @@ SLUS-21456:
   compat: 5
   roundModes:
     vu1RoundMode: 0 # Crashes without.
+  speedHacks:
+    mtvu: 0 # Prevents crashes after the completion of the tutorial.
   gsHWFixes:
     minimumBlendingLevel: 3 # Fixes broken lighting on ground and buildings.
     halfPixelOffset: 4 # Mostly aligns post processing.
